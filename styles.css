@@ -34,6 +34,7 @@ body {
 .side-bar {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: var(--primary-color);
   border-right: 1px solid #e4ebfa; /* Light divider */
   width: var(--sidebar-width);
@@ -66,13 +67,11 @@ h4 {
   letter-spacing: 0.125rem; /* Makes heading more spaced */
 }
 
-.board-btn {
+.board-btn,
+#sidebar-toggle-container {
   font-family: inherit;
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between icon and text */
-  background-color: #635fc7;
-  color: #fff;
   border: none;
   border-radius: 0 100px 100px 0; /* Pill shape only on right side */
   height: 48px;
@@ -82,6 +81,65 @@ h4 {
   font-weight: bold;
   cursor: pointer;
   overflow: hidden; /* Prevents overflowed text/icons from showing */
+}
+
+.board-btn {
+  gap: 10px; /* Space between icon and text */
+  background-color: #635fc7;
+  color: #fff;
+}
+
+#bottom-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 1rem;
+}
+
+/* Hide sidebar */
+
+#sidebar-toggle-container {
+    gap: 40px;
+    background-color: var(--secondary-color);
+    color: #635FC7;
+}
+
+/* Theme switch */
+
+#theme-toggle-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-color);
+    margin: 0 2rem 0 1rem;
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    border-radius: 6px;
+}
+
+#toggle-theme-btn {
+    background-color: #635FC7;
+    width: 40px;
+    height: 20px;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#switch-circle {
+    background-color: var(--primary-color);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    position: relative;
+    transform: translateX(4px);
+}
+
+#theme-dark-clicked {
+    transform: translateX(22px);
 }
 
 /* ===============
@@ -108,7 +166,6 @@ header {
   width: 100%;
   font-size: 1.875rem;
   font-weight: 600;
-  border: 2px solid red;
 }
 
 .header-name-div {
@@ -116,7 +173,7 @@ header {
   align-items: center;
 }
 
-/*ADDED*/
+/* Add New Task Button */
 
 #add-task-btn {
     font-size: 0.9375rem;
@@ -129,8 +186,6 @@ header {
     margin-right: 25px;
     cursor: pointer;
 }
-
-/*ADDED*/
 
 .logo-mobile {
   display: none; /* Hidden on desktop; shown on smaller screens */
