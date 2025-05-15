@@ -111,5 +111,24 @@
       </div>
       <div id="icon-hide-menu"><span>👀</span></div>
     </div>
+    <div id="modal-overlay"></div>
+    <div id="edit-task-modal">
+      <div id="edit-modal-top-section">
+        <h4 id="edit-task-heading">Task</h4>
+        <button id="close-edit-btn">✕</button>
+      </div>
+      <form id="edit-task-body">
+        <label for="edit-title">Title</label>
+        <input id="edit-title" type="text" />
+        <label for="edit-description">Description</label>
+        <input id="edit-description" type="text" />
+        <label for="edit-status">Status</label>
+        <select name="status" id="edit-status">
+          <option value="todo">todo</option>
+          <option value="doing">doing</option>
+          <option value="done">done</option>
+        </select>
+      </form>
+    </div>
   </body>
 </html>
