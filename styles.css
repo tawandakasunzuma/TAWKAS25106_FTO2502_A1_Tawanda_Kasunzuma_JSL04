@@ -339,6 +339,7 @@ h2 {
   z-index: 1;
   padding: 0 24px 0 24px;
   border-radius: 6px;
+  display: none;
 }
 
 #edit-modal-top-section {
@@ -380,6 +381,7 @@ h2 {
   font-size: 13px;
   padding: 0.625rem 0.5rem;
   width: 550px;
+  width: clamp(295px,50vw,550px);
   border: 1px solid #828FA340;
   margin-bottom: 24px;
   font-weight: 500;
@@ -388,7 +390,8 @@ h2 {
 }
 
 #edit-description {
-  height: 114px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  line-height: 1.375;
 }
 
 /* ========================
