@@ -326,11 +326,10 @@ h2 {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  display: none;
 }
 
-/* Edit Task Modal*/
-
-#edit-task-modal {
+.task-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -339,23 +338,30 @@ h2 {
   z-index: 1;
   padding: 0 24px 0 24px;
   border-radius: 6px;
+}
+
+.edit-task-modal {
   display: none;
 }
 
-#edit-modal-top-section {
+.add-new-task-modal {
+  display: none;
+}
+
+.modal-top-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#edit-task-heading {
+.modal-heading {
   font-size: 18px;
   font-weight: bold;
   color: #000112;
 }
 
-#close-edit-btn {
-  font-size: 18px;
+.modal-close-btn {
+  font-size: 24px;
   font-weight: bold;
   color: #EA5555;
   border: none;
@@ -363,12 +369,14 @@ h2 {
   cursor: pointer;
 }
 
-#edit-task-body {
+#edit-task-body,
+#add-new-task-body {
   display: flex;
   flex-direction: column;
 }
 
-#edit-task-body label {
+#edit-task-body label,
+#add-new-task-body label {
   font-size: 12px;
   color: var(--secondary-font-color);
   font-weight: bold;
@@ -377,7 +385,10 @@ h2 {
 
 #edit-title,
 #edit-description,
-#edit-status {
+#edit-status,
+#add-new-task-title,
+#add-new-task-description,
+#add-new-task-status {
   font-size: 13px;
   padding: 0.625rem 0.5rem;
   width: 550px;
@@ -389,9 +400,39 @@ h2 {
   color: #000112;
 }
 
-#edit-description {
+#edit-description,
+#add-new-task-description {
   font-family: "Plus Jakarta Sans", sans-serif;
   line-height: 1.375;
+}
+
+.modal-btn {
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  border: none;
+  padding: 0.75rem 0;
+  border-radius: 20px;
+}
+
+#add-new-task-btn,
+#save-changes-btn {
+  background-color: #635FC7;
+}
+
+#delete-task-btn {
+  background-color: #EA5555;
+}
+
+#edit-btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+#save-changes-btn,
+#delete-task-btn {
+  width: 100%;
 }
 
 /* ========================
@@ -500,5 +541,9 @@ h2 {
     height: 33px;
     border-radius: 24px;
     padding: 20px 20px;
+  }
+  #edit-btn-container {
+    flex-direction: column;
+    gap: 15px;
   }
 }
