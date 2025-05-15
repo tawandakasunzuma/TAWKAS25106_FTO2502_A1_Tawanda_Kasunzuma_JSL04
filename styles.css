@@ -109,7 +109,7 @@ h4 {
 
 /* Theme switch */
 
-#theme-toggle-container {
+.theme-toggle-container {
     display: flex;
     align-items: center;
     background-color: var(--secondary-color);
@@ -180,7 +180,7 @@ header {
 
 .add-task-btn {
     font-size: 0.9375rem;
-    padding: 16px 24px;
+    padding: 14px 24px;
     font-weight: 700;
     color: var(--primary-color);
     background-color: #635FC7;
@@ -435,6 +435,10 @@ h2 {
   width: 100%;
 }
 
+#mobile-menu-modal {
+  display: none;
+}
+
 /* ========================
    Responsive Styles
 ======================== */
@@ -545,5 +549,57 @@ h2 {
   #edit-btn-container {
     flex-direction: column;
     gap: 15px;
+  }
+  
+  #mobile-modal-top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+  #mobile-menu-modal {
+    position: fixed;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 1;
+    padding: 0 24px 0 24px;
+    border-radius: 8px;
+    width: 340px;
+    display: none;
+  }
+  #mobile-modal-heading {
+    padding-left: 65px;
+  }
+
+  #mobile-modal-close-btn {
+    font-size: 24px;
+    font-weight: bold;
+    color: #EA5555;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+  }
+  #mobile-modal-launch-btn {
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 0 100px 100px 0;
+    height: 48px;
+    width: 276px;
+    padding: 28px 12px 28px 50px;
+    font-size: 0.9375rem;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #635fc7;
+    color: #fff;
+    position: relative;
+    left: -24;
+    margin: 5px 0 30px 0;
+  }
+  #mobile-modal-theme-toggle {
+    margin-bottom: 30px;
   }
 }
