@@ -1,4 +1,4 @@
-const initialTasks = [
+export const initialTasks = [
   {
     id: 1,
     title: "Launch Epic Career 🚀",
