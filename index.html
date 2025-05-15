@@ -20,7 +20,7 @@
 
   <body>
     <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav class="side-bar" id="side-bar-div">
+    <nav class="side-bar desktop-side-bar" id="side-bar-div">
       <div id="top-sidebar">
         <div id="side-logo-div">
           <img id="logo" src="./assets/logo-light.svg" alt="logo-light" />
@@ -61,10 +61,13 @@
             Launch Career
           </h2>
         </div>
-        <button id="add-task-btn">+ Add New Task</button>
+        <button class="add-task-btn" id="desktop-add-task-btn">
+          + Add New Task
+        </button>
+        <button class="add-task-btn" id="mobile-add-task-btn">+</button>
       </header>
 
-      <div class="container">
+      <div class="container container-hide">
         <main class="card-column-main">
           <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
           <div class="column-div" data-status="todo">
@@ -106,6 +109,7 @@
           </div>
         </main>
       </div>
+      <div id="icon-hide-menu"><span>👀</span></div>
     </div>
   </body>
 </html>
