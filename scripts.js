@@ -23,12 +23,21 @@ const modalOverlay = document.getElementById("modal-overlay");
 
 // Edit task modal
 const editTaskModal = document.querySelector(".edit-task-modal");
-const modalCloseBtn = document.querySelector(".modal-close-btn");
+const editModalCloseBtn = editTaskModal.querySelector(".modal-close-btn");
 const editTaskTitle = document.getElementById("edit-title");
 const editTaskDescription = document.getElementById("edit-description");
 const editTaskStatus = document.getElementById("edit-status");
 const saveChangesBtn = document.getElementById("save-changes-btn");
 const deleteTaskBtn = document.getElementById("delete-task-btn");
+
+// Add new task modal
+const openAddTaskButton = document.getElementById("desktop-add-task-btn");
+const addTaskModal = document.querySelector(".add-new-task-modal");
+const addModalCloseBtn = addTaskModal.querySelector(".modal-close-btn");
+const addTaskTitle = document.getElementById("add-new-task-title");
+const addTaskDescription = document.getElementById("add-new-task-description");
+const addTaskStatus = document.getElementById("add-new-task-status");
+const addNewTaskButton = document.getElementById("add-new-task-btn");
 
 /*====================
     RENDER LOGIC
@@ -67,7 +76,7 @@ function renderData () {
                 editTaskTitle.value = task.title;
                 editTaskDescription.value = task.description;
                 editTaskStatus.value = task.status;
-                openModal ();
+                openModal (editTaskModal);
                 
                 // Set current task
                 currentTask = task;
@@ -96,7 +105,7 @@ saveChangesBtn.addEventListener("click", (event) => {
         currentTask.status = editTaskStatus.value;
     }
 
-    closeModal ();
+    closeModal (editTaskModal);
     renderData();
 })
 
@@ -114,21 +123,65 @@ deleteTaskBtn.addEventListener("click", (event) => {
         if (currentId !== -1) {
             data.splice(currentId,1)
         }
-        
+
         // Clear reference
         currentTask = null;
     }
 
-    closeModal();
+    closeModal(editTaskModal);
     renderData();
 })
+
+/*====================
+    OPEN ADD NEW TASK BUTTON
+====================*/
+
+openAddTaskButton.addEventListener("click", () => {
+    openModal (addTaskModal);
+});
+
+/*====================
+    ADD NEW TASK BUTTON
+====================*/
+
+let taskId = 6;
+
+addNewTaskButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    const newTaskTitle = addTaskTitle.value;
+    const newTaskDescription = addTaskDescription.value;
+    const newTaskStatus = addTaskStatus.value;
+    data.push(
+        {
+            id: taskId++,
+            title: newTaskTitle,
+            description: newTaskDescription,
+            status: newTaskStatus
+        }
+    )
+    closeModal(addTaskModal);
+    console.log(data)
+    renderData();
+});
 
 /*====================
     CLOSE MODAL BUTTONS
 ====================*/
 
-modalCloseBtn.addEventListener("click", () => {
-    closeModal ();
+// Close edit task modal
+editModalCloseBtn.addEventListener("click", () => {
+    closeModal (editTaskModal);
+})
+
+// Close add task modal
+addModalCloseBtn.addEventListener("click", () => {
+    closeModal (addTaskModal);
+})
+
+// Close by pressing overlay
+modalOverlay.addEventListener("click", () => {
+    closeModal(editTaskModal);
+    closeModal(addTaskModal);
 })
 
 /*====================
@@ -136,15 +189,15 @@ modalCloseBtn.addEventListener("click", () => {
 ====================*/
 
 /*** Open modal */
-const closeModal = () => {
+const closeModal = (typeOfModal) => {
     modalOverlay.style.display = "none";
-    editTaskModal.style.display = "none";
+    typeOfModal.style.display = "none";
 }
 
 /*** Close modal */
-const openModal = () => {
+const openModal = (typeOfModal) => {
     modalOverlay.style.display = "block";
-    editTaskModal.style.display = "block";
+    typeOfModal.style.display = "block";
 }
 
 /*====================

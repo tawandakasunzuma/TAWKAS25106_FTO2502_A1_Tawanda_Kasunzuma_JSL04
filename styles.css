@@ -195,10 +195,6 @@ header {
   border-radius: 24px;
 }
 
-#mobile-add-task-btn {
-  display: none;
-}
-
 .logo-mobile {
   display: none; /* Hidden on desktop; shown on smaller screens */
 }
@@ -435,11 +431,14 @@ h2 {
 #save-changes-btn,
 #delete-task-btn {
   width: 100%;
-  cursor: pointer;
 }
 
 #mobile-menu-modal {
   display: none;
+}
+
+.modal-btn {
+  cursor: pointer;
 }
 
 /* ========================
@@ -538,16 +537,16 @@ h2 {
     display: none;
   }
   #desktop-add-task-btn {
-    display: none;
-  }
-  #mobile-add-task-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 33px;
     height: 33px;
     border-radius: 24px;
-    padding: 20px 20px;
+    padding: 22px 22px;
+  }
+  #hide-add-new-task {
+    display: none;
   }
   #edit-btn-container {
     flex-direction: column;
