@@ -52,7 +52,8 @@ const mobileModalCloseBtn = document.getElementById("mobile-modal-close-btn");
 // Theme switch
 const themeSwitchCircle = document.querySelector(".switch-circle");
 const themeSwitchButton = document.querySelector(".toggle-theme-btn");
-const mobileThemeSwitchButton = document.querySelector(".dark-mode-mobile-circle");
+const themeSwitchCircleMobile = document.getElementById("dark-mode-mobile-circle");
+const themeSwitchButtonMobile = document.getElementById("dark-mode-theme-btn");
 
 /*====================
     RENDER LOGIC
@@ -236,27 +237,34 @@ mobileLogoIcon.addEventListener("click", () => {
 
 let isDarkMode = false;
 
+/** Change theme function */
+const toggleTheme = () => {
+    // Toggle dark mode between true and false
+    isDarkMode = !isDarkMode;
+    // Update circle and body 
+    themeSwitchCircle.classList.toggle("theme-dark-clicked");
+    document.body.classList.toggle("dark", isDarkMode);
+    // Sidebar logos and text
+    document.getElementById("logo").style.display = isDarkMode ? "none" : "flex";
+    document.getElementById("dark-logo").style.display = isDarkMode ? "flex" : "none";
+    document.getElementById("close-sidebar-text").style.color = isDarkMode ? "#FFFFFF" : "#635FC7";
+    // Toggle mobile circle
+    themeSwitchCircleMobile.classList.toggle("theme-dark-clicked",isDarkMode);
+    // Update toggle backgrounds
+    document.getElementById("dark-mode-theme-btn").style.backgroundColor = isDarkMode ? "#20212C" : "#635FC7";
+    document.getElementById("mobile-modal-theme-toggle").style.backgroundColor = isDarkMode ? "#635FC7" : "#f4f7fd";
+}
+
+// Desktop theme change
 themeSwitchButton.addEventListener("click", () => {
-    if (isDarkMode === false) {
-        themeSwitchCircle.classList.toggle("theme-dark-clicked");
-        document.body.classList.toggle('dark');
-        document.getElementById("logo").style.display = "none";
-        document.getElementById("dark-logo").style.display = "flex";
-        document.getElementById("close-sidebar-text").style.color = "#FFFFFF";
-        document.getElementById("dark-mode-theme-btn").style.backgroundColor = "#20212C";
-        document.getElementById("mobile-modal-theme-toggle").style.backgroundColor = "#635FC7";
-        isDarkMode = true;
-    } else {
-        themeSwitchCircle.classList.remove("theme-dark-clicked");
-        document.body.classList.remove('dark');
-        document.getElementById("logo").style.display = "block";
-        document.getElementById("dark-logo").style.display = "none";
-        document.getElementById("close-sidebar-text").style.color = "#635FC7";
-        document.getElementById("dark-mode-theme-btn").style.backgroundColor = "#635FC7";
-        document.getElementById("mobile-modal-theme-toggle").style.backgroundColor = "#f4f7fd";
-        isDarkMode = false;
-    }
+    toggleTheme ();
 });
+
+// Mobile theme toggle
+themeSwitchButtonMobile.addEventListener("click", () => {
+    toggleTheme ();
+})
+
 
 /*====================
     FUNCTIONS
