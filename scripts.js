@@ -1,16 +1,22 @@
 /*====================
-    Import data
+    STATE & DATA
 ====================*/
 
 import { initialTasks } from "./initialData.js";
 const data = [...initialTasks];
-
-// Track current edited task and DOM element
 let currentTask = null;
 
 /*====================
-    Cache modals
+    DOM CACHE
 ====================*/
+
+// Columns
+const todoTasksContainer = document.getElementById("todo-tasks-container");
+const doingTasksContainer = document.getElementById("doing-tasks-container");
+const doneTasksContainer = document.getElementById("done-tasks-container");
+const numTasksTodo = document.getElementById("num-tasks-todo");
+const numTasksDoing = document.getElementById("num-tasks-doing");
+const numTasksDone = document.getElementById("num-tasks-done");
 
 // Modal overlay
 const modalOverlay = document.getElementById("modal-overlay");
@@ -25,15 +31,10 @@ const saveChangesBtn = document.getElementById("save-changes-btn");
 const deleteTaskBtn = document.getElementById("delete-task-btn");
 
 /*====================
-    Render data
+    RENDER LOGIC
 ====================*/
 
 function renderData () {
-
-    // Cache the tasks containers
-    const todoTasksContainer = document.getElementById("todo-tasks-container");
-    const doingTasksContainer = document.getElementById("doing-tasks-container");
-    const doneTasksContainer = document.getElementById("done-tasks-container");
 
     // Clear containers before re-rendering
     todoTasksContainer.innerHTML = "";
@@ -45,94 +46,109 @@ function renderData () {
     const doingTasks = data.filter(task => task.status === "doing");
     const doneTasks = data.filter(task => task.status === "done");
 
-    // Update total tasks in columns
-    const numTasksTodo = document.getElementById("num-tasks-todo");
-    const numTasksDoing = document.getElementById("num-tasks-doing");
-    const numTasksDone = document.getElementById("num-tasks-done");
+    // Update total number tasks in columns heading
     numTasksTodo.textContent = `(${todoTasks.length})`
     numTasksDoing.textContent = `(${doingTasks.length})`
     numTasksDone.textContent = `(${doneTasks.length})`
 
     // Render tasks to DOM in correct containers
     const renderTasks = ((typeTask,container) => {
-        // Loop through type of task
+        
         typeTask.forEach (task => {
-            
+        
+            // Create div, update it and add it to DOM
             const div = document.createElement("div");
             div.textContent = task.title;
             div.classList.add("task-div");
             container.append(div);
-            
-            // Open task modal
+        
+            // Open modal and update its content
             div.addEventListener("click", () => {
-
-                // Show overlay and popup edit modal
-                modalOverlay.style.display = "block";
-                editTaskModal.style.display = "block";
-
-                // Show details on edit modal 
                 editTaskTitle.value = task.title;
                 editTaskDescription.value = task.description;
                 editTaskStatus.value = task.status;
-
+                openModal ();
+                
                 // Set current task
                 currentTask = task;
             })
         })
     });
 
+    // Render each status to its column container
     renderTasks(todoTasks,todoTasksContainer);
     renderTasks(doingTasks,doingTasksContainer);
     renderTasks(doneTasks,doneTasksContainer);
 }
 
-// Save changes button
+/*====================
+    SAVE CHANGES BUTTON
+====================*/
+
 saveChangesBtn.addEventListener("click", (event) => {
+
     event.preventDefault();
-    // Update current task
+
+    // Update task properties based on modal data
     if (currentTask) {
-        // Update task properties based on modal data
         currentTask.title = editTaskTitle.value;
         currentTask.description = editTaskDescription.value;
         currentTask.status = editTaskStatus.value;
     }
 
-    // Close the modal
-    modalOverlay.style.display = "none";
-    editTaskModal.style.display = "none";
-
-    // Re render everything with updated data
+    closeModal ();
     renderData();
 })
 
-// Close modal button
-modalCloseBtn.addEventListener("click", () => {
-    modalOverlay.style.display = "none";
-    editTaskModal.style.display = "none";
-})
+/*====================
+    DELETE TASK BUTTON
+====================*/
 
-// Delete task button
 deleteTaskBtn.addEventListener("click", (event) => {
-    // Stop form submission
+
     event.preventDefault();
+
+    // Delete correct task from data
     if (currentTask) {
-        // Find index of item clicked
         const currentId = data.findIndex(task => task.id === currentTask.id);
-        // Delete item from data array
         if (currentId !== -1) {
             data.splice(currentId,1)
         }
+        
         // Clear reference
         currentTask = null;
     }
 
-    // Close the modal
-    modalOverlay.style.display = "none";
-    editTaskModal.style.display = "none";
-
-    // Re render everything with updated data
+    closeModal();
     renderData();
 })
 
-// Initial render
+/*====================
+    CLOSE MODAL BUTTONS
+====================*/
+
+modalCloseBtn.addEventListener("click", () => {
+    closeModal ();
+})
+
+/*====================
+    FUNCTIONS
+====================*/
+
+/*** Open modal */
+const closeModal = () => {
+    modalOverlay.style.display = "none";
+    editTaskModal.style.display = "none";
+}
+
+/*** Close modal */
+const openModal = () => {
+    modalOverlay.style.display = "block";
+    editTaskModal.style.display = "block";
+}
+
+/*====================
+    INITIAL RENDER
+====================*/
+
 renderData();
