@@ -49,6 +49,11 @@ const mobileLogoIcon = document.querySelector(".logo-mobile");
 const mobileModal = document.getElementById("mobile-menu-modal");
 const mobileModalCloseBtn = document.getElementById("mobile-modal-close-btn");
 
+// Theme switch
+const themeSwitchCircle = document.querySelector(".switch-circle");
+const themeSwitchButton = document.querySelector(".toggle-theme-btn");
+const mobileThemeSwitchButton = document.querySelector(".dark-mode-mobile-circle");
+
 /*====================
     RENDER LOGIC
 ====================*/
@@ -224,6 +229,34 @@ mobileModalCloseBtn.addEventListener("click", () => {
 mobileLogoIcon.addEventListener("click", () => {
     openModal (mobileModal);
 })
+
+/*====================
+    THEME SWITCH
+====================*/
+
+let isDarkMode = false;
+
+themeSwitchButton.addEventListener("click", () => {
+    if (isDarkMode === false) {
+        themeSwitchCircle.classList.toggle("theme-dark-clicked");
+        document.body.classList.toggle('dark');
+        document.getElementById("logo").style.display = "none";
+        document.getElementById("dark-logo").style.display = "flex";
+        document.getElementById("close-sidebar-text").style.color = "#FFFFFF";
+        document.getElementById("dark-mode-theme-btn").style.backgroundColor = "#20212C";
+        document.getElementById("mobile-modal-theme-toggle").style.backgroundColor = "#635FC7";
+        isDarkMode = true;
+    } else {
+        themeSwitchCircle.classList.remove("theme-dark-clicked");
+        document.body.classList.remove('dark');
+        document.getElementById("logo").style.display = "block";
+        document.getElementById("dark-logo").style.display = "none";
+        document.getElementById("close-sidebar-text").style.color = "#635FC7";
+        document.getElementById("dark-mode-theme-btn").style.backgroundColor = "#635FC7";
+        document.getElementById("mobile-modal-theme-toggle").style.backgroundColor = "#f4f7fd";
+        isDarkMode = false;
+    }
+});
 
 /*====================
     FUNCTIONS

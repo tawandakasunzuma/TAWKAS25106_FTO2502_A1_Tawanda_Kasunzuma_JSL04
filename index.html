@@ -24,6 +24,7 @@
       <div id="top-sidebar">
         <div id="side-logo-div">
           <img id="logo" src="./assets/logo-light.svg" alt="logo-light" />
+          <img id="dark-logo" src="./assets/dark-mode-logo.png" alt="logo-dark" />
         </div>
 
         <div class="boards-nav-links-div" id="boards-nav-links-div">
@@ -35,8 +36,8 @@
       <div id="bottom-sidebar">
         <div class="theme-toggle-container">
           <span id="light-mode-icon">☀️</span>
-          <div id="toggle-theme-btn">
-            <div id="switch-circle"></div>
+          <div class="toggle-theme-btn">
+            <div class="switch-circle"></div>
           </div>
           <span id="dark-mode-icon">🌑</span>
         </div>
@@ -54,8 +55,15 @@
         <div class="header-name-div">
           <img
             src="./assets/favicon.svg"
-            alt="logo-mobile"
+            alt="light-logo-mobile"
             class="logo-mobile"
+            id="light-logo-mobile"
+          />
+          <img
+            src="./assets/dark-mode-icon.png"
+            alt="dark-logo-mobile"
+            class="logo-mobile"
+            id="dark-logo-mobile"
           />
           <h2 class="header-board-name" id="header-board-name">
             Launch Career
@@ -173,8 +181,8 @@
       </h2>
       <div id="mobile-modal-theme-toggle" class="theme-toggle-container">
         <span id="light-mode-icon">☀️</span>
-        <div id="toggle-theme-btn">
-          <div id="switch-circle"></div>
+        <div id="dark-mode-theme-btn" class="toggle-theme-btn">
+          <div id="dark-mode-mobile-circle" class="switch-circle"></div>
         </div>
         <span id="dark-mode-icon">🌑</span>
       </div>
