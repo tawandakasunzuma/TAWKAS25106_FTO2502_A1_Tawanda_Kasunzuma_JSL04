@@ -299,7 +299,7 @@ header {
 .task-div {
   display: flex;
   align-items: center;
-  padding-left: 15px;
+  padding: 0 15px;
   width: 100%;
   height: 60px;
   background-color: var(--primary-color);
@@ -435,6 +435,7 @@ h2 {
 #save-changes-btn,
 #delete-task-btn {
   width: 100%;
+  cursor: pointer;
 }
 
 #mobile-menu-modal {
