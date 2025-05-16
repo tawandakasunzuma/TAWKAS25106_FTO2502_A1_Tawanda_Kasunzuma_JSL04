@@ -10,6 +10,8 @@
   --secondary-color: #f4f7fd;
   --primary-font-color: #000000;
   --secondary-font-color: #828fa3;
+  --tertiary-purple-color: #635FC7;
+  --red-color: #EA5555;
   --primary-box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1015); /* Subtle shadow for card depth */
   --sidebar-width: 300px; /* Sidebar fixed width */
 }
@@ -86,8 +88,8 @@ h4 {
 
 .board-btn {
   gap: 10px; /* Space between icon and text */
-  background-color: #635fc7;
-  color: #fff;
+  background-color: var(--tertiary-purple-color);
+  color: var(--primary-color);
 }
 
 /* Bottom sidebar */
@@ -104,7 +106,7 @@ h4 {
 #sidebar-toggle-container {
     gap: 40px;
     background-color: var(--secondary-color);
-    color: #635FC7;
+    color: var(--tertiary-purple-color);
 }
 
 /* Theme switch */
@@ -122,7 +124,7 @@ h4 {
 }
 
 #toggle-theme-btn {
-    background-color: #635FC7;
+    background-color: var(--tertiary-purple-color);
     width: 40px;
     height: 20px;
     border: none;
@@ -183,7 +185,7 @@ header {
     padding: 14px 24px;
     font-weight: 700;
     color: var(--primary-color);
-    background-color: #635FC7;
+    background-color: var(--tertiary-purple-color);
     border: none;
     margin-right: 25px;
     cursor: pointer;
@@ -334,7 +336,7 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: var(--primary-color);
   z-index: 1;
   padding: 0 24px 0 24px;
   border-radius: 6px;
@@ -357,15 +359,15 @@ h2 {
 .modal-heading {
   font-size: 18px;
   font-weight: bold;
-  color: #000112;
+  color: var(--primary-font-color);
 }
 
 .modal-close-btn {
   font-size: 24px;
   font-weight: bold;
-  color: #EA5555;
+  color: var(--red-color);
   border: none;
-  background-color: white;
+  background-color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -397,7 +399,7 @@ h2 {
   margin-bottom: 24px;
   font-weight: 500;
   border-radius: 4px;
-  color: #000112;
+  color: var(--primary-font-color);
 }
 
 #edit-description,
@@ -407,7 +409,7 @@ h2 {
 }
 
 .modal-btn {
-  color: white;
+  color: var(--primary-color);
   font-size: 13px;
   font-weight: bold;
   border: none;
@@ -417,11 +419,11 @@ h2 {
 
 #add-new-task-btn,
 #save-changes-btn {
-  background-color: #635FC7;
+  background-color: var(--tertiary-purple-color);
 }
 
 #delete-task-btn {
-  background-color: #EA5555;
+  background-color: var(--red-color);
 }
 
 #edit-btn-container {
@@ -561,7 +563,7 @@ h2 {
     top: 28%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: var(--primary-color);
     z-index: 1;
     padding: 0 24px 0 24px;
     border-radius: 8px;
@@ -575,9 +577,9 @@ h2 {
   #mobile-modal-close-btn {
     font-size: 24px;
     font-weight: bold;
-    color: #EA5555;
+    color: var(--red-color);
     border: none;
-    background-color: white;
+    background-color: var(--primary-color);
     cursor: pointer;
   }
   #mobile-modal-launch-btn {
@@ -593,8 +595,8 @@ h2 {
     font-weight: bold;
     cursor: pointer;
     overflow: hidden;
-    background-color: #635fc7;
-    color: #fff;
+    background-color: var(--tertiary-purple-color);
+    color: var(--primary-color);
     position: relative;
     left: -24;
     margin: 5px 0 30px 0;

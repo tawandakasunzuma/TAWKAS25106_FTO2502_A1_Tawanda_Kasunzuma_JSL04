@@ -15,14 +15,22 @@ function renderData () {
     const doneTasks = data.filter(task => task.status === "done");
 
     // Render tasks to DOM in correct containers
-    const renderTasks = ((tasks,container) => {
-        tasks.forEach (task => {
+    const renderTasks = ((typeTask,container) => {
+        typeTask.forEach (task => {
             const div = document.createElement("div");
             div.textContent = task.title;
             div.classList.add("task-div");
             container.append(div);
         })
     });
+
+        const numTasksTodo = document.getElementById("num-tasks-todo");
+    const numTasksDoing = document.getElementById("num-tasks-doing");
+    const numTasksDone = document.getElementById("num-tasks-done");
+
+    numTasksTodo.textContent = `(${todoTasks.length})`
+    numTasksDoing.textContent = `(${doingTasks.length})`
+    numTasksDone.textContent = `(${doneTasks.length})`
     
     renderTasks(todoTasks,todoTasksContainer);
     renderTasks(doingTasks,doingTasksContainer);
