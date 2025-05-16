@@ -516,6 +516,13 @@ h2 {
    Responsive Styles
 ======================== */
 
+/******** Desktop ********/
+@media screen and (min-width: 1024px) {
+  #mobile-menu-modal {
+    display: none !important;
+  }
+}
+
 /******** Tablets ********/
 @media screen and (max-width: 1023px) {
   .side-bar {
@@ -592,6 +599,14 @@ h2 {
 
   .column-div {
     width: 100%;
+  }
+
+  body.dark #dark-logo-mobile {
+    display: block;
+  }
+
+  body.dark #light-logo-mobile {
+    display: none;
   }
 }
 

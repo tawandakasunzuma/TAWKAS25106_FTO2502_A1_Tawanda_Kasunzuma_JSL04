@@ -45,7 +45,7 @@ const showSidebarIcon = document.getElementById("icon-hide-menu");
 const sidebar = document.querySelector(".side-bar");
 
 // Mobile hide sidebar
-const mobileLogoIcon = document.querySelector(".logo-mobile");
+const mobileLogoIcons = document.querySelectorAll(".logo-mobile");
 const mobileModal = document.getElementById("mobile-menu-modal");
 const mobileModalCloseBtn = document.getElementById("mobile-modal-close-btn");
 
@@ -167,16 +167,22 @@ addNewTaskButton.addEventListener("click", (event) => {
     const newTaskTitle = addTaskTitle.value;
     const newTaskDescription = addTaskDescription.value;
     const newTaskStatus = addTaskStatus.value;
-    data.push(
-        {
-            id: taskId++,
-            title: newTaskTitle,
-            description: newTaskDescription,
-            status: newTaskStatus
-        }
-    )
-    closeModal(addTaskModal);
+    if (newTaskTitle.trim() === "") {
+        alert("Please enter a task title")
+    } else {
+        data.push(
+            {
+                id: taskId++,
+                title: newTaskTitle,
+                description: newTaskDescription,
+                status: newTaskStatus
+            }
+        )
+        closeModal(addTaskModal);
+    }
     renderData();
+    addTaskTitle.value = "";
+    addTaskDescription.value = "";
 });
 
 /*====================
@@ -227,8 +233,15 @@ mobileModalCloseBtn.addEventListener("click", () => {
     closeModal(mobileModal);
 })
 
-mobileLogoIcon.addEventListener("click", () => {
-    openModal (mobileModal);
+mobileLogoIcons.forEach (icon => {
+    icon.addEventListener("click", () => {
+        if (window.innerWidth <= 1023) {
+            openModal (mobileModal);
+        } else {
+            closeModal (mobileModal);
+            modalOverlay.style.display = "none";
+        }
+    })
 })
 
 /*====================
@@ -287,3 +300,16 @@ const openModal = (typeOfModal) => {
 ====================*/
 
 renderData();
+
+/*====================
+    RESIZE WINDOW
+====================*/
+
+// Close overlay when screen resizes
+window.addEventListener("resize", () => {
+  // if go above breaking point
+  if (window.innerWidth > 1023) {
+    // close the mobile menu and its overlay
+    closeModal(mobileModal);
+  }
+});
