@@ -41,7 +41,6 @@ body {
   border-right: 1px solid #e4ebfa; /* Light divider */
   width: var(--sidebar-width);
   height: 100vh;
-/*  display: none;*/
 }
 
 #side-logo-div {
@@ -197,6 +196,7 @@ header {
 
 .logo-mobile {
   display: none; /* Hidden on desktop; shown on smaller screens */
+  cursor: pointer;
 }
 
 /* ===============
@@ -278,6 +278,7 @@ header {
   padding-bottom: 5px;
   padding-right: 5px;
   display: none;
+  cursor: pointer;
 }
 
 #icon-hide-menu span {
@@ -441,6 +442,57 @@ h2 {
   cursor: pointer;
 }
 
+#mobile-modal-top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+#mobile-menu-modal {
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-color);
+  z-index: 1;
+  padding: 0 24px 0 24px;
+  border-radius: 8px;
+  width: 340px;
+  display: none;
+}
+#mobile-modal-heading {
+  padding-left: 65px;
+}
+#mobile-modal-close-btn {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--red-color);
+  border: none;
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+#mobile-modal-launch-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 0 100px 100px 0;
+  height: 48px;
+  width: 276px;
+  padding: 28px 12px 28px 50px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: var(--tertiary-purple-color);
+  color: var(--primary-color);
+  position: relative;
+  left: -24;
+  margin: 5px 0 30px 0;
+}
+#mobile-modal-theme-toggle {
+  margin-bottom: 30px;
+}
+
 /* ========================
    Responsive Styles
 ======================== */
@@ -448,9 +500,11 @@ h2 {
 /******** Tablets ********/
 @media screen and (max-width: 1023px) {
   .side-bar {
-    display: none; /* Hide sidebar on tablets and smaller */
+    display: none !important; /* Hide sidebar on tablets and smaller */
   }
-
+  #icon-hide-menu {
+    display: none !important;
+  }
   .side-bar.show-sidebar {
     display: flex !important;
     position: fixed; /* Overlay on top of page */
@@ -551,57 +605,5 @@ h2 {
   #edit-btn-container {
     flex-direction: column;
     gap: 15px;
-  }
-  
-  #mobile-modal-top {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-  }
-  #mobile-menu-modal {
-    position: fixed;
-    top: 28%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--primary-color);
-    z-index: 1;
-    padding: 0 24px 0 24px;
-    border-radius: 8px;
-    width: 340px;
-    display: none;
-  }
-  #mobile-modal-heading {
-    padding-left: 65px;
-  }
-
-  #mobile-modal-close-btn {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--red-color);
-    border: none;
-    background-color: var(--primary-color);
-    cursor: pointer;
-  }
-  #mobile-modal-launch-btn {
-    font-family: inherit;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 0 100px 100px 0;
-    height: 48px;
-    width: 276px;
-    padding: 28px 12px 28px 50px;
-    font-size: 0.9375rem;
-    font-weight: bold;
-    cursor: pointer;
-    overflow: hidden;
-    background-color: var(--tertiary-purple-color);
-    color: var(--primary-color);
-    position: relative;
-    left: -24;
-    margin: 5px 0 30px 0;
-  }
-  #mobile-modal-theme-toggle {
-    margin-bottom: 30px;
   }
 }

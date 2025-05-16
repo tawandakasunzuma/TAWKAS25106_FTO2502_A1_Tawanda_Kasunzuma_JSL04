@@ -18,10 +18,10 @@ const numTasksTodo = document.getElementById("num-tasks-todo");
 const numTasksDoing = document.getElementById("num-tasks-doing");
 const numTasksDone = document.getElementById("num-tasks-done");
 
-// Modal overlay
+// Modal - Overlay
 const modalOverlay = document.getElementById("modal-overlay");
 
-// Edit task modal
+// Modal - Edit task
 const editTaskModal = document.querySelector(".edit-task-modal");
 const editModalCloseBtn = editTaskModal.querySelector(".modal-close-btn");
 const editTaskTitle = document.getElementById("edit-title");
@@ -30,7 +30,7 @@ const editTaskStatus = document.getElementById("edit-status");
 const saveChangesBtn = document.getElementById("save-changes-btn");
 const deleteTaskBtn = document.getElementById("delete-task-btn");
 
-// Add new task modal
+// Modal - Add new task
 const openAddTaskButton = document.getElementById("desktop-add-task-btn");
 const addTaskModal = document.querySelector(".add-new-task-modal");
 const addModalCloseBtn = addTaskModal.querySelector(".modal-close-btn");
@@ -38,6 +38,16 @@ const addTaskTitle = document.getElementById("add-new-task-title");
 const addTaskDescription = document.getElementById("add-new-task-description");
 const addTaskStatus = document.getElementById("add-new-task-status");
 const addNewTaskButton = document.getElementById("add-new-task-btn");
+
+// Hide sidebar
+const hideSidebarBtn = document.getElementById("sidebar-toggle-container");
+const showSidebarIcon = document.getElementById("icon-hide-menu");
+const sidebar = document.querySelector(".side-bar");
+
+// Mobile hide sidebar
+const mobileLogoIcon = document.querySelector(".logo-mobile");
+const mobileModal = document.getElementById("mobile-menu-modal");
+const mobileModalCloseBtn = document.getElementById("mobile-modal-close-btn");
 
 /*====================
     RENDER LOGIC
@@ -91,7 +101,7 @@ function renderData () {
 }
 
 /*====================
-    SAVE CHANGES BUTTON
+    SAVE CHANGES - BUTTON
 ====================*/
 
 saveChangesBtn.addEventListener("click", (event) => {
@@ -110,7 +120,7 @@ saveChangesBtn.addEventListener("click", (event) => {
 })
 
 /*====================
-    DELETE TASK BUTTON
+    DELETE TASK - BUTTON
 ====================*/
 
 deleteTaskBtn.addEventListener("click", (event) => {
@@ -133,7 +143,7 @@ deleteTaskBtn.addEventListener("click", (event) => {
 })
 
 /*====================
-    OPEN ADD NEW TASK BUTTON
+    OPEN ADD NEW TASK
 ====================*/
 
 openAddTaskButton.addEventListener("click", () => {
@@ -141,7 +151,7 @@ openAddTaskButton.addEventListener("click", () => {
 });
 
 /*====================
-    ADD NEW TASK BUTTON
+    ADD NEW TASK - BUTTON
 ====================*/
 
 let taskId = 6;
@@ -160,12 +170,29 @@ addNewTaskButton.addEventListener("click", (event) => {
         }
     )
     closeModal(addTaskModal);
-    console.log(data)
     renderData();
 });
 
 /*====================
-    CLOSE MODAL BUTTONS
+    DESKTOP CLOSE SIDEBAR - BUTTON
+====================*/
+
+hideSidebarBtn.addEventListener("click", () => {
+    sidebar.style.display = "none";
+    showSidebarIcon.style.display = "flex";
+})
+
+/*====================
+    DESKTOP OPEN SIDEBAR - ICON
+====================*/
+
+showSidebarIcon.addEventListener("click", () => {
+    sidebar.style.display = "flex";
+    showSidebarIcon.style.display = "none";
+})
+
+/*====================
+    CLOSE MODAL - BUTTONS
 ====================*/
 
 // Close edit task modal
@@ -182,6 +209,20 @@ addModalCloseBtn.addEventListener("click", () => {
 modalOverlay.addEventListener("click", () => {
     closeModal(editTaskModal);
     closeModal(addTaskModal);
+    closeModal(mobileModal);
+})
+
+/*====================
+    MOBILE MODAL
+====================*/
+
+// Close mobile task modal
+mobileModalCloseBtn.addEventListener("click", () => {
+    closeModal(mobileModal);
+})
+
+mobileLogoIcon.addEventListener("click", () => {
+    openModal (mobileModal);
 })
 
 /*====================
