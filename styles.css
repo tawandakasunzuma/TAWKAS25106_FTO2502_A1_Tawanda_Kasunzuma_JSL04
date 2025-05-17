@@ -538,6 +538,14 @@ h2 {
   margin-bottom: 30px;
 }
 
+/* Force sidebar colors */
+body.dark .sidebar-desktop-dark-container {
+  background-color: var(--tertiary-purple-color) !important;
+}
+body.dark .sidebar-desktop-dark-button {
+  background-color: #20212C !important;
+}
+
 /* ========================
    Responsive Styles
 ======================== */
