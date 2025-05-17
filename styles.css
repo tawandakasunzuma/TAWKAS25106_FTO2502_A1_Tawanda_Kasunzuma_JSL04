@@ -2,7 +2,7 @@
    Global & Root Variables
 ======================== */
 * {
-  box-sizing: border-box; /* Ensures padding and border are included in total element size */
+  box-sizing: border-box;
 }
 
 :root {
@@ -28,13 +28,13 @@
 ================ */
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
-  display: flex; /* Allow layout to span horizontally */
+  display: flex;
   flex-direction: row;
   width: 100%;
   min-height: 100vh;
   margin: 0;
   background-color: var(--secondary-color);
-  font-size: 1rem; /* Base font size for rem scaling */
+  font-size: 1rem;
 }
 
 /* ================
@@ -45,13 +45,13 @@ body {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--primary-color);
-  border-right: 1px solid #e4ebfa; /* Light divider */
+  border-right: 1px solid #e4ebfa;
   width: var(--sidebar-width);
   height: 100vh;
 }
 
 #side-logo-div {
-  margin: 33px 113px 54px 34px; /* Spacing around logo */
+  margin: 33px 113px 54px 34px;
   display: flex;
   justify-content: flex-start;
 }
@@ -72,13 +72,13 @@ body {
 }
 
 #headline-sidepanel {
-  padding: 0 12px 0 50px; /* Aligns section content from left and right */
+  padding: 0 12px 0 50px;
 }
 
 h4 {
   color: var(--secondary-font-color);
   font-size: 0.75rem;
-  letter-spacing: 0.125rem; /* Makes heading more spaced */
+  letter-spacing: 0.125rem;
 }
 
 .board-btn,
@@ -87,18 +87,18 @@ h4 {
   display: flex;
   align-items: center;
   border: none;
-  border-radius: 0 100px 100px 0; /* Pill shape only on right side */
+  border-radius: 0 100px 100px 0;
   height: 48px;
   width: 276px;
   padding: 28px 12px 28px 50px;
   font-size: 0.9375rem;
   font-weight: bold;
   cursor: pointer;
-  overflow: hidden; /* Prevents overflowed text/icons from showing */
+  overflow: hidden;
 }
 
 .board-btn {
-  gap: 10px; /* Space between icon and text */
+  gap: 10px;
   background-color: var(--tertiary-purple-color);
   color: #FFFFFF !important;
 }
@@ -173,8 +173,8 @@ h4 {
    Main Layout
 ================ */
 #layout {
-  flex: 1; /* Fills remaining space beside sidebar */
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  flex: 1;
+  overflow-x: hidden;
   width: 100%;
 }
 
@@ -230,7 +230,7 @@ header {
 }
 
 .logo-mobile {
-  display: none; /* Hidden on desktop; shown on smaller screens */
+  display: none;
   cursor: pointer;
 }
 
@@ -250,8 +250,8 @@ header {
   grid-template-columns: repeat(
     3,
     minmax(0, 304px)
-  ); /* 3 columns with min size */
-  gap: 8px; /* Space between columns */
+  );
+  gap: 8px;
 }
 
 .column-div {
@@ -265,7 +265,7 @@ header {
 .column-head-div {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between dot and column title */
+  gap: 10px;
 }
 
 .columnHeader {
@@ -279,7 +279,7 @@ header {
 .dot {
   height: 15px;
   width: 15px;
-  border-radius: 50%; /* Make it circular */
+  border-radius: 50%;
   display: inline-block;
 }
 
@@ -338,7 +338,7 @@ header {
   color: var(--primary-font-color);
   border-radius: 12px;
   box-shadow: var(--primary-box-shadow);
-  cursor: pointer; /* Indicate it's clickable */
+  cursor: pointer;
   margin-bottom: 20px;
   font-size: 0.9375rem;
   font-weight: bold;
@@ -548,14 +548,14 @@ h2 {
 /******** Tablets ********/
 @media screen and (max-width: 1023px) {
   .side-bar {
-    display: none !important; /* Hide sidebar on tablets and smaller */
+    display: none !important;
   }
   #icon-hide-menu {
     display: none !important;
   }
   .side-bar.show-sidebar {
     display: flex !important;
-    position: fixed; /* Overlay on top of page */
+    position: fixed;
     height: auto;
   }
 
@@ -584,7 +584,7 @@ h2 {
   .container {
     padding: 0;
     width: 100%;
-    align-items: center; /* Center columns on smaller screens */
+    align-items: center;
   }
 
   .card-column-main {
@@ -629,6 +629,12 @@ h2 {
 
   body.dark #light-logo-mobile {
     display: none;
+  }
+  .logo-mobile {
+    transition: transform 900ms ease-in-out;
+  }
+  .logo-mobile:focus {
+    transform: rotate(360deg);
   }
 }
 
