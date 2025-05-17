@@ -1,40 +1,128 @@
 # JSL04 Project Brief: Dynamic Task Display & Modal View
 
-## Overview
+---
 
-In this project, you will dynamically display tasks from the **given initial data** on the DOM using JavaScript. Tasks should be placed into the correct **Kanban board columns** based on their status, and clicking a task should open a **modal** where users can view and modify task details. The project emphasizes **DOM manipulation, event handling, modular JavaScript structure, and responsive UI implementation.**
+## Project Overview
 
-## Before You Begin
+This project dynamically displays tasks from a **given initial data** on the DOM using JavaScript. Tasks are placed into correct **Kanban board columns** based on their status. Clicking a task should open a **modal** where users can view and modify task details. The project emphasizes **DOM manipulation, event handling, modular JavaScript structure, and responsive UI implementation.** The design should match the **Figma** designs in the link.
 
-**Check the project user stories in your student dashboard and the updated Figma Design** before you start building.
+[Figma Link](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=0-1&p=f&t=Ki0CZk0RAjrk9Fhs-0)
 
-## Figma Design Link
+<hr style="border:0; height:2px; background:#ddd;" />
 
-Check the updated Figma Design: [Figma Link](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=0-1&p=f&t=Ki0CZk0RAjrk9Fhs-0)
+## 🚀 Features
 
-## Key Objectives
+**Loads Tasks Automatically**
 
-### Dynamic Task Display & Interaction
+- Tasks come from the data and go straight into “To Do,” “In Progress,” or “Done” columns. There is no hard coding needed.
 
-- Dynamically generate **task elements** from the given initial data and insert them into the DOM.
-- Ensure tasks are placed in the **correct columns** ("To Do", "In Progress", "Done") based on their status.
-- Clicking a task should **open a modal** displaying its details.
-- The modal should include:
-  - **Editable input fields** for the task title and description.
-  - **A select dropdown** showing the current status with other status options available.
-  - **A close button** that allows users to exit the modal easily.
+**Easy Editing in a Modal**
 
-### Design & Responsiveness
+- Click any task to open a popup where you can change the title, description, or status and then close it. You may delete the existing task as well.
 
-- Ensure the **modal matches the Figma design**, including a **backdrop effect** for focus.
-- Implement a **fully responsive modal** that works on both desktop and mobile devices.
+**Create New Tasks**
 
-### Code Structure & Maintainability
+- Click 'add new task' or '+' button to create a brand new task.
 
-- Structure JavaScript using **modular, single-responsibility functions**.
-- Use **descriptive and meaningful variable and function names** for clarity.
-- Add **JSDoc comments** to major functions, describing their purpose, parameters, and return values for better documentation.
+**Works on All Devices**
 
-## Expected Outcome
+- The board and popup look good and work smoothly on both desktop and mobile screens.
 
-A fully functional **dynamic task board** where tasks appear under the correct columns, and users can **open a modal to view/edit** task details. The project will follow **clean, well-documented, and maintainable code practices**, ensuring a professional and scalable implementation.
+**Clean, Organized Code**
+
+- JavaScript is split into small, clear functions with helpful comments so it’s easy to read and maintain.
+
+<hr style="border:0; height:2px; background:#ddd;" />
+
+## 📦 Tech Stack
+
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+
+<hr style="border:0; height:2px; background:#ddd;" />
+
+## 🛠️ Usage
+
+#### Use the Kanban board to:
+
+- Organize your tasks into columns such as "To Do", "In Progress", and "Done"
+- Track your workflow visually
+- Manage small or large projects easily
+
+<hr style="border:0; height:2px; background:#ddd;" />
+
+## 🔧 Setup & Installation
+
+#### 1. Clone the Repository
+
+```bash
+git clone https://github.com/tawandakasunzuma/TAWKAS25106_FTO2502_A1_Tawanda_Kasunzuma_JSL04.git
+cd TAWKAS25106_FTO2502_A1_Tawanda_Kasunzuma_JSL04
+```
+
+#### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+#### 3. Run the Local Server
+
+```bash
+npm start
+```
+
+<hr style="border:0; height:2px; background:#ddd;" />
+
+## 📸 Screenshots
+
+#### Desktop (Light-mode & Dark-mode)
+
+<img src="./reference-images/desktop-light-mode.png" alt="Desktop Light Mode" width="400"/>
+<img src="./reference-images/desktop-dark-mode.png" alt="Desktop Dark Mode" width="400"/>
+
+#### Mobile (Light-mode & Dark-mode (Popup))
+
+<img src="./reference-images/mobile-light-mode.png" alt="Mobile Light Mode" width="150"/>
+<img src="./reference-images/mobile-popup-dark-mode.png" alt="Mobile Popup Dark Mode" width="150"/>
+
+#### Task Modals (Add new task & Edit current task)
+
+<img src="./reference-images/add-new-task-modal.png" alt="Add New Task Modal" width="400"/>
+<img src="./reference-images/edit-current-task-modal.png" alt="Edit Current Task Modal" width="400"/>
+
+<hr style="border:0; height:2px; background:#ddd;" />
+
+## 🧩 Contributing
+
+Contributions are welcome! To get started:
+
+1. **Fork** the repository
+
+2. **Create a new branch**
+
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+
+3. **Commit your changes**
+
+   ```bash
+   git commit -m "Add your feature"
+   ```
+
+4. **Push to your branch**
+
+   ```bash
+   git push origin feature/your-feature
+   ```
+
+5. **Open a Pull Request** on Github
+
+<hr style="border:0; height:2px; background:#ddd;" />
+
+## 🙋‍♂️ Contact
+
+For questions or feedback, reach out to:
+📧 tskasunzume@gmail.com
