@@ -2,7 +2,20 @@
 
 ---
 
-## Project Overview
+## Table of Contents
+
+- [📝 Project Overview](#project-overview)
+- [🚀 Features](#features)
+- [📦 Tech Stack](#tech-stack)
+- [🛠️ Usage](#usage)
+- [🔧 Setup & Installation](#setup--installation)
+- [📸 Screenshots](#screenshots)
+- [🧩 Contributing](#contributing)
+- [🙋‍♂️ Contact](#contact)
+
+---
+
+<h2 id="project-overview">📝 Project Overview</h2>
 
 This project dynamically displays tasks from a **given initial data** on the DOM using JavaScript. Tasks are placed into correct **Kanban board columns** based on their status. Clicking a task should open a **modal** where users can view and modify task details. The project emphasizes **DOM manipulation, event handling, modular JavaScript structure, and responsive UI implementation.** The design should match the **Figma** designs in the link.
 
@@ -10,7 +23,7 @@ This project dynamically displays tasks from a **given initial data** on the DOM
 
 <hr style="border:0; height:2px; background:#ddd;" />
 
-## 🚀 Features
+<h2 id="features">🚀 Features</h2>
 
 **Loads Tasks Automatically**
 
@@ -34,7 +47,7 @@ This project dynamically displays tasks from a **given initial data** on the DOM
 
 <hr style="border:0; height:2px; background:#ddd;" />
 
-## 📦 Tech Stack
+<h2 id="tech-stack">📦 Tech Stack</h2>
 
 - HTML5
 - CSS3
@@ -42,7 +55,9 @@ This project dynamically displays tasks from a **given initial data** on the DOM
 
 <hr style="border:0; height:2px; background:#ddd;" />
 
-## 🛠️ Usage
+<a name="usage"></a>
+
+<h2 id="usage">🛠️ Usage</h2>
 
 #### Use the Kanban board to:
 
@@ -52,7 +67,7 @@ This project dynamically displays tasks from a **given initial data** on the DOM
 
 <hr style="border:0; height:2px; background:#ddd;" />
 
-## 🔧 Setup & Installation
+<h2 id="setup--installation">🔧 Setup & Installation</h2>
 
 #### 1. Clone the Repository
 
@@ -75,7 +90,7 @@ npm start
 
 <hr style="border:0; height:2px; background:#ddd;" />
 
-## 📸 Screenshots
+<h2 id="screenshots">📸 Screenshots</h2>
 
 #### Desktop (Light-mode & Dark-mode)
 
@@ -94,7 +109,7 @@ npm start
 
 <hr style="border:0; height:2px; background:#ddd;" />
 
-## 🧩 Contributing
+<h2 id="contributing">🧩 Contributing</h2>
 
 Contributions are welcome! To get started:
 
@@ -122,7 +137,9 @@ Contributions are welcome! To get started:
 
 <hr style="border:0; height:2px; background:#ddd;" />
 
-## 🙋‍♂️ Contact
+<a name="contact"></a>
+
+<h2 id="contact">🙋‍♂️ Contact</h2>
 
 For questions or feedback, reach out to:
-📧 tskasunzume@gmail.com
+📧 tskasunzuma@gmail.com
