@@ -230,6 +230,11 @@ header {
 #desktop-add-task-btn {
   border-radius: 24px;
   color: #FFFFFF !important;
+  transition: all 600ms ease;
+}
+
+#desktop-add-task-btn:hover {
+  background-color: #A8A4FF;
 }
 
 .logo-mobile {
@@ -462,10 +467,21 @@ h2 {
 #add-new-task-btn,
 #save-changes-btn {
   background-color: var(--tertiary-purple-color);
+  transition: all 600ms ease;
+}
+
+#add-new-task-btn:hover,
+#save-changes-btn:hover {
+  background-color: #A8A4FF;
 }
 
 #delete-task-btn {
   background-color: var(--red-color);
+  transition: all 600ms ease;
+}
+
+#delete-task-btn:hover {
+  background-color: #FF9898;
 }
 
 #edit-btn-container {
