@@ -4,7 +4,7 @@
 
 import { initialTasks } from "./initialData.js";
 const data = [...initialTasks];
-let currentTask = null;
+let selectedTask = null;
 
 /* CACHE DOM - MODAL OVERLAY */
 const modalOverlay = document.getElementById("modal-overlay");
@@ -37,7 +37,7 @@ const renderData = () => {
     const doingTasks = data.filter(task => task.status === "doing");
     const doneTasks = data.filter(task => task.status === "done");
 
-    // Update total number tasks in columns heading
+    // Update total tasks number display in column headings
     numTasksTodo.textContent = `(${todoTasks.length})`;
     numTasksDoing.textContent = `(${doingTasks.length})`;
     numTasksDone.textContent = `(${doneTasks.length})`;
@@ -52,6 +52,7 @@ const renderData = () => {
         
         typeTask.forEach (task => {
         
+            // Create div and updates its content
             const div = document.createElement("div");
             div.textContent = task.title;
             div.classList.add("task-div");
@@ -81,6 +82,11 @@ const editTaskTitle = document.getElementById("edit-title");
 const editTaskDescription = document.getElementById("edit-description");
 const editTaskStatus = document.getElementById("edit-status");
 
+// Close 'edit task' modal
+editModalCloseBtn.addEventListener("click", () => {
+    closeModal (editTaskModal);
+})
+
 /**
  * Opens the edit modal and fills its fields with the given task data
  * @param {{id:number,title:string,description:string,status:string}} task - The task to load into the modal
@@ -91,13 +97,8 @@ const loadClickedModal = (task) => {
     editTaskDescription.value = task.description;
     editTaskStatus.value = task.status;
     openModal (editTaskModal);
-    currentTask = task;
+    selectedTask = task;
 }
-
-// Close 'edit task' modal
-editModalCloseBtn.addEventListener("click", () => {
-    closeModal (editTaskModal);
-})
 
 /*====================
     SAVE CHANGES - BUTTON
@@ -111,7 +112,7 @@ saveChangesBtn.addEventListener("click", (event) => {
 })
 
 /**
- * Handles the 'Save Changes' button click: validates inputs, updates the task, and re-renders.
+ * Handles the 'Save Changes' button click: updates the task, and re-renders.
  * @param {MouseEvent} event - Click event from the Save button
  * @returns {void}
  */
@@ -119,11 +120,9 @@ const onSavedTask = (event) => {
     event.preventDefault();
 
     // Update task properties based on modal data
-    if (currentTask) {
-        currentTask.title = editTaskTitle.value;
-        currentTask.description = editTaskDescription.value;
-        currentTask.status = editTaskStatus.value;
-    }
+    selectedTask.title = editTaskTitle.value;
+    selectedTask.description = editTaskDescription.value;
+    selectedTask.status = editTaskStatus.value;
 
     closeModal (editTaskModal);
     renderData ();
@@ -146,19 +145,16 @@ deleteTaskBtn.addEventListener("click", (event) => {
  * @returns {void}
  */
 const onDeleteTask = (event) => {
-
     event.preventDefault();
 
     // Delete correct task from data and DOM
-    if (currentTask) {
-        const currentId = data.findIndex(task => task.id === currentTask.id);
-        if (currentId !== -1) {
-            data.splice(currentId,1)
-        }
-
-        // Clear reference
-        currentTask = null;
+    const currentId = data.findIndex(task => task.id === selectedTask.id);
+    if (currentId !== -1) {
+        data.splice(currentId,1)
     }
+
+    // Clear reference because task deleted
+    selectedTask = null;
 
     closeModal(editTaskModal);
     renderData();
@@ -199,30 +195,31 @@ addNewTaskButton.addEventListener("click", (event) => {
  * @returns {void}
  */
 const onAddNewTask = (event) => {
-
     event.preventDefault();
 
     const newTaskTitle = addTaskTitle.value;
     const newTaskDescription = addTaskDescription.value;
     const newTaskStatus = addTaskStatus.value;
 
+    // Validate acceptable title has been entered
     if (newTaskTitle.trim() === "") {
         alert("Please enter a task title")
-    } else {
-        data.push({
-            id: taskId++,
-            title: newTaskTitle,
-            description: newTaskDescription,
-            status: newTaskStatus
-        })
-
-        closeModal(addTaskModal);
     }
 
-    renderData();
-    
+    // Add new task to data
+    data.push({
+        id: taskId++,
+        title: newTaskTitle,
+        description: newTaskDescription,
+        status: newTaskStatus
+    })
+
+    // Reset entry fields
     addTaskTitle.value = "";
     addTaskDescription.value = "";
+
+    closeModal(addTaskModal);
+    renderData();
 }
 
 /*====================
@@ -239,11 +236,6 @@ hideSidebarBtn.addEventListener("click", () => {
     onHideSidebar ();
 })
 
-// Show sidebar
-showSidebarIcon.addEventListener("click", () => {
-    onShowSidebar ();
-})
-
 /**
  * Hides the sidebar and shows the 'open' icon.
  * @returns {void}
@@ -252,6 +244,11 @@ const onHideSidebar = () => {
   sidebar.style.display = "none";
   showSidebarIcon.style.display = "flex";
 }
+
+// Show sidebar
+showSidebarIcon.addEventListener("click", () => {
+    onShowSidebar ();
+})
 
 /**
  * Shows the sidebar and hides the “open” icon.
@@ -271,7 +268,7 @@ const mobileLogoIcons = document.querySelectorAll(".logo-mobile");
 const mobileModal = document.getElementById("mobile-menu-modal");
 const mobileModalCloseBtn = document.getElementById("mobile-modal-close-btn");
 
-// Open modal when clicked
+// Open modal when icons (Dark mode & Light mode) clicked
 mobileLogoIcons.forEach (icon => {
     icon.addEventListener("click", () => {
         openModal (mobileModal);
@@ -313,9 +310,15 @@ const themeSwitchButtonMobile = document.getElementById("dark-mode-theme-btn");
 
 let isDarkMode = false;
 
-const toggleTheme = () => {
+// Desktop theme change
+themeSwitchButton.addEventListener("click", () => {
     themeToggle ();
-}
+});
+
+// Mobile theme toggle
+themeSwitchButtonMobile.addEventListener("click", () => {
+    themeToggle ();
+})
 
 /**
     * Toggles between 'light and dark mode', updating the user interface.
@@ -325,11 +328,12 @@ const themeToggle = () => {
 
     // Toggle dark mode between true and false
     isDarkMode = !isDarkMode;
-
-    // Update circle and body 
-    themeSwitchCircle.classList.toggle("theme-dark-clicked");
-    themeSwitchCircleMobile.classList.toggle("theme-dark-clicked",isDarkMode);
+    
     document.body.classList.toggle("dark", isDarkMode);
+
+    // Update circle and body in buttons
+    themeSwitchCircle.classList.toggle("theme-dark-clicked", isDarkMode);
+    themeSwitchCircleMobile.classList.toggle("theme-dark-clicked", isDarkMode);
 
     // Sidebar logos and text
     document.getElementById("logo").style.display = isDarkMode ? "none" : "flex";
@@ -340,16 +344,6 @@ const themeToggle = () => {
     document.getElementById("dark-mode-theme-btn").style.backgroundColor = isDarkMode ? "#20212C" : "#635FC7";
     document.getElementById("mobile-modal-theme-toggle").style.backgroundColor = isDarkMode ? "#635FC7" : "#f4f7fd";
 }
-
-// Desktop theme change
-themeSwitchButton.addEventListener("click", () => {
-    toggleTheme ();
-});
-
-// Mobile theme toggle
-themeSwitchButtonMobile.addEventListener("click", () => {
-    toggleTheme ();
-})
 
 /*====================
     OPEN & CLOSE MODAL
